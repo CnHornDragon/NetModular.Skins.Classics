@@ -37,10 +37,12 @@ export default {
     active: {
       get() {
         if (this.current.name && this.routeMenus) {
-          let routeMenu = this.routeMenus.get(this.current.name)
-
-          if (routeMenu) {
-            return routeMenu.menu.id
+          const { current, routeMenus } = this
+          if (current.name && routeMenus) {
+            let routeMenu = routeMenus.get(current.code)
+            if (routeMenu) {
+              return routeMenu.menu.id
+            }
           }
         }
         return '-1'
